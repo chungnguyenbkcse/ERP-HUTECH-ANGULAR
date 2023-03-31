@@ -5,6 +5,7 @@ import { SharedModule } from "@shared/shared.module";
 import { TooltipModule } from "ngx-bootstrap";
 import { ChangeInfoUserComponent } from "./change-info/change-info-user.component";
 import { UsersComponent } from "./users.component";
+import { UsersService } from "./users.service";
 
 @NgModule({
     imports: [
@@ -12,6 +13,6 @@ import { UsersComponent } from "./users.component";
     ],
     declarations: [ChangeInfoUserComponent, UsersComponent],
     exports: [ChangeInfoUserComponent, UsersComponent],
-    providers: [TokenService]
+    providers: [TokenService, UsersService]
 })
 export class UsersModule {}

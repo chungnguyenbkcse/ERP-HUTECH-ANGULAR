@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http';
 import { UrlVariable } from '@util/variable'
 import { Subject } from 'rxjs';
+const jwt_decode = require('jwt-decode');
 import { TokenService } from '@components/auth/token.service';
+
 
 /**
  * @author Chung
@@ -42,8 +44,6 @@ export class UsersService {
                 username: dto.username,
                 fullname: dto.fullname,
                 image: dto.image
-            },{
-                headers: {Authentication: `Bearer ${token}`}
             })
             .toPromise()
             .then(res => res)
@@ -59,10 +59,34 @@ export class UsersService {
         return this._http
             .post(`${this.URL_LOGIN}/change-password`, {
                 newpassword: newPassword
-            }, {
-                headers: {Authentication: `Bearer ${token}`}
             })
             .toPromise()
             .then(res => res)
+    }
+
+
+    /**
+     * @author Chung
+     * lấy data
+     */
+
+    getData = (): Promise<any> => {
+        // Tạo một đối tượng JwtHelperService
+
+        // Giải mã JWT
+        const token = this._tokenService.getToken().toString();
+
+        const decodedToken = jwt_decode(token);
+        console.log(decodedToken)
+        const username = decodedToken.username;
+        return this._http.post(`${this.URL_LOGIN}/user/get-user`, {
+            username: username
+        })
+            .toPromise()
+            .then(res => {
+                return res;
+            });
+        // Do something with decodedToken
+
     }
 }

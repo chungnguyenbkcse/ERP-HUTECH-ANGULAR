@@ -40,6 +40,7 @@ export class HttpClientCustom implements HttpInterceptor {
         return req.clone({
             setHeaders: {
                 Authorization: `JWT ${token}`,
+                Authentication: `Bearer ${token}`,
                 "app-key": Version.APP_ID,
             },
 
