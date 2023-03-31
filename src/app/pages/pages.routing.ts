@@ -7,6 +7,7 @@ import { MainLayoutComponent } from 'app/shared/layout/app-layouts/main-layout.c
 import { AuthLayoutComponent } from 'app/shared/layout/app-layouts/auth-layout.component'
 import { TodoListComponent } from '@components/todo/todo-list/todo-list.component'
 import { CustomtodoComponent } from '@components/custom_todo/customtodo.component'
+import { ChangeInfoUserComponent } from '@components/user/change-info/change-info-user.component'
 
 
 
@@ -27,8 +28,8 @@ export const routes: Routes = [
         component: CustomtodoComponent,
       },
       {
-        path: 'test',
-        component: TodoListComponent,
+        path: 'profile',
+        component: ChangeInfoUserComponent,
       },
     ],
   },

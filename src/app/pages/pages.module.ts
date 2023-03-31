@@ -9,6 +9,7 @@ import { Pages } from './pages.component'
 import { UtilsModule } from '@shared/utils/utils.module'
 import { TodoModule } from '@components/todo/todo.module'
 import { SharedModule } from '@shared/shared.module'
+import { CustomtodoModule } from '@components/custom_todo/customtodo.module'
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { SharedModule } from '@shared/shared.module'
     routing,
     SharedModule,
     TodoModule,
+    CustomtodoModule,
   ],
   declarations: [Pages],
   providers: [

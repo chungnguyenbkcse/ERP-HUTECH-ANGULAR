@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { CustomtodoService } from "./customtodo.service";
 import { Customtodo } from "./customtodo.model";
 import * as _ from 'lodash';
-import { ModalService } from "@components/modal/modal.service";
+import { ModalService } from "@shared/modal/modal.service";
 import { moment } from "ngx-bootstrap/chronos/test/chain";
 
 @Component({

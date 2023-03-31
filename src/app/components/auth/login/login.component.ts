@@ -90,6 +90,8 @@ export class LoginComponent {
           
           this.error = error.error;
 
+          console.log(this.error)
+
           /* 
           400 -> sai pass
           401 -> tài khoản bị khoá hoặc không có quyền sử dụng app
@@ -97,7 +99,7 @@ export class LoginComponent {
           405 -> đăng nhập sai quá nhiều
           500 -> service bị lỗi
           */
-          switch (+this.error.code) {
+          switch (+this.error.statusCode) {
             case 403:
             case 401:
               this.SoLanDangNhapSai += 1

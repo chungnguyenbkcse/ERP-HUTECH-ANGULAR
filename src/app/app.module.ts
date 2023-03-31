@@ -37,7 +37,8 @@ import { AppComponent } from './app.component'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientCustom } from '@components/auth/custom-http-client';
 import { CustomtodoModule } from '@components/custom_todo/customtodo.module'
-import { ModalComponent } from '@components/modal/modal.component'
+import { UserModule } from '@shared/user'
+import { UsersModule } from '@components/user/users.module'
 
 // import { NewsManageSettingService } from 'app/components/news-manage-setting/shared/news-manage-setting.service'
 
@@ -72,6 +73,7 @@ export type StoreType = {
     FeedbackModule,
     PagesModule,
     CustomtodoModule,
+    UsersModule,
     // AngularFireModule.initializeApp(firebaseConfig),
     // AngularFireDatabaseModule,
     // AngularFireAuthModule,

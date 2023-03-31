@@ -4,8 +4,8 @@ import { SharedModule } from "@shared/shared.module";
 import { TooltipModule } from "ngx-bootstrap";
 import { CustomtodoComponent } from "./customtodo.component";
 import { CustomtodoService } from "./customtodo.service";
-import { ModalComponent } from "@components/modal/modal.component";
-import { ModalService } from "@components/modal/modal.service";
+import { ModalComponent } from "@shared/modal/modal.component";
+import { ModalService } from "@shared/modal/modal.service";
 
 @NgModule({
     imports: [
