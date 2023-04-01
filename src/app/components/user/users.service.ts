@@ -4,6 +4,7 @@ import { UrlVariable } from '@util/variable'
 import { Subject } from 'rxjs';
 const jwt_decode = require('jwt-decode');
 import { TokenService } from '@components/auth/token.service';
+import { Users } from './users.model';
 
 
 /**
@@ -40,13 +41,40 @@ export class UsersService {
     public editUser(dto) {
         const token = this._tokenService.getToken();
         return this._http
-            .put(`${this.URL_LOGIN}/user}`, {
+            .post(`${this.URL_LOGIN}/user/update`, {
+                id: dto.id,
                 username: dto.username,
                 fullname: dto.fullname,
                 image: dto.image
             })
             .toPromise()
-            .then(res => res)
+            .then(res => {
+                alert('Successfully changed information!')
+                return res
+            })
+    }
+
+    public async uploadImage(formData, dto) {
+        let imageUrl = "";
+        this._http
+            .post(`${this.URL_LOGIN}/uploads`, formData)
+            .subscribe(
+                (response: any) => {
+                    imageUrl = response.url;
+                    const user = new Users({
+                        id: dto.id,
+                        username: dto.username,
+                        fullname: dto.fullname,
+                        image: response.url
+                    });
+                    return this.editUser(user);
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
+        console.log(imageUrl)
+        return imageUrl
     }
 
     /**
