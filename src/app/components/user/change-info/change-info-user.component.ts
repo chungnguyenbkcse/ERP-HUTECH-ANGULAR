@@ -23,7 +23,7 @@ export class ChangeInfoUserComponent implements OnInit {
     ngOnInit() {
         this.getData().then(value => {
             this.id = value.id;
-            this.imageUrl = value.image;
+            this.imageUrl = value.image;    
             this.username = value.username;
             this.fullname = value.fullname;
             this.image = value.image;

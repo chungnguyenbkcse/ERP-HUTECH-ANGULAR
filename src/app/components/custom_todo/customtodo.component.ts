@@ -74,7 +74,7 @@ export class CustomtodoComponent implements OnInit {
             checked: dto.checked
         }).then(result => {
             this.list.map((ele) => {
-                if (ele.id = dto.id) {
+                if (ele.id == dto.id) {
                     ele.content = this.content_edit;
                     ele.time_update = moment(Date.now()).format("DD/MM/YYYY HH:mm:ss");
                 }
