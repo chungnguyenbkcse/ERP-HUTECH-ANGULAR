@@ -8,9 +8,9 @@ export class ModalService {
 
     add(modal: ModalComponent) {
         // ensure component has a unique id attribute
-        if (!modal.id || this.modals.find(x => x.id === modal.id)) {
+        /* if (!modal.id || this.modals.find(x => x.id === modal.id)) {
             throw new Error('modal must have a unique id attribute');
-        }
+        } */
 
         // add modal to array of active modals
         this.modals.push(modal);
