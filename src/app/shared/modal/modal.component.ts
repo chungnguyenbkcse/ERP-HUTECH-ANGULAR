@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation, ElementRef, Input, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { ModalService } from './modal.service';
 
 
@@ -10,11 +10,17 @@ import { ModalService } from './modal.service';
 })
 export class ModalComponent implements OnInit, OnDestroy {
     @Input() id?: string;
+    @Output() newItemEvent = new EventEmitter<string>();
+    
     isOpen = false;
     private element: any;
 
     constructor(private modalService: ModalService, private el: ElementRef) {
         this.element = el.nativeElement;
+    }
+
+    addNewItem(value: string) {
+        this.newItemEvent.emit(value);
     }
 
     ngOnInit() {

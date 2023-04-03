@@ -8,6 +8,8 @@ import { AuthLayoutComponent } from 'app/shared/layout/app-layouts/auth-layout.c
 import { TodoListComponent } from '@components/todo/todo-list/todo-list.component'
 import { CustomtodoComponent } from '@components/custom_todo/customtodo.component'
 import { ChangeInfoUserComponent } from '@components/user/change-info/change-info-user.component'
+import { ChangePasswordUserComponent } from '@components/user/change-password/change-password-user.component'
+import { UsersComponent } from '@components/user/users.component'
 
 
 
@@ -29,8 +31,8 @@ export const routes: Routes = [
       },
       {
         path: 'profile',
-        component: ChangeInfoUserComponent,
-      },
+        component: UsersComponent,
+      }
     ],
   },
 ]

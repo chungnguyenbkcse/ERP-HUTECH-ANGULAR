@@ -62,6 +62,13 @@ export class CustomtodoComponent implements OnInit {
         this.modalService.open('modal-1');
     }
 
+    items = ['item1', 'item2', 'item3', 'item4'];
+
+    addItem(newItem: string) {
+        this.items.push(newItem);
+        console.log(this.items)
+    }
+
 
     private edit(dto): Promise<void> {
         if (!dto.content.trim()) {

@@ -67,7 +67,7 @@
             <div class="d-flex flex-row justify-content-end mb-1">
               <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo" (click)="openModal(item.id, $event)"><i
                   class="fas fa-pencil-alt me-3"></i></a>
-                  <jw-modal id="modal-1">
+                  <jw-modal id="modal-1" (newItemEvent)="addItem($event)">
                     <h1>EDIT TODO</h1>
                     <p>Content: <input class="content" type="text" [(ngModel)]="content_edit" [value]="content_edit" /></p>
                     <button class="btn btn-primary" (click)="edit(item)">Save</button>

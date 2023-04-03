@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-profile',
-    template: '<router-outlet></router-outlet>',
+    templateUrl: './users.component.html',
 })
 export class UsersComponent implements OnInit {
-
     constructor() { }
 
     ngOnInit() {
+
     }
 
 }
