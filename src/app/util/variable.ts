@@ -68,9 +68,10 @@ export class CookieConfig {
   public static readonly EXPIRES = 7;
   /**Tên Object lưu dưới cookie Authen */
   public static readonly AUTHEN_COOKIE = 'Auth-menu';
-  public static readonly IMAGE_COOKIE = 'Image-menu';
-  public static readonly NVID_COOKIE = 'Nvid-menu';
-  public static readonly NAME_COOKIE = 'name-menu';
+  public static readonly USERNAME_COOKIE = 'Username';
+  public static readonly IMAGE_COOKIE = 'Image';
+  public static readonly NVID_COOKIE = 'Id';
+  public static readonly NAME_COOKIE = 'Name';
 }
 
 

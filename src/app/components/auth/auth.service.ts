@@ -5,6 +5,7 @@ import { TokenService } from '@components/auth/token.service'
 import { UrlVariable, CookieConfig, Version } from '@util/variable'
 import { ManageStateService } from '@shared/manage-state.service'
 import { Subject } from 'rxjs';
+const jwt_decode = require('jwt-decode');
 
 
 @Injectable()
@@ -72,6 +73,8 @@ export class AuthService {
         kết quả trả về từ phía server
         */
         const token = res['access_token']
+
+        const decodedToken = jwt_decode(token);
         /* const listMenu_active = res['listmenu_active']
         this.hoTen = res['result']['Ho_Ten']
         this.image = res['result']['image']
@@ -93,7 +96,7 @@ export class AuthService {
         */
         this.manageStateService.saveWithExpired(
           CookieConfig.IMAGE_COOKIE,
-          this.image
+          decodedToken.image
         )
 
         /* 
@@ -101,7 +104,7 @@ export class AuthService {
         */
         this.manageStateService.saveWithExpired(
           CookieConfig.NVID_COOKIE,
-          this.NhanVienID
+          decodedToken.sub
         )
 
         /* 
@@ -109,7 +112,13 @@ export class AuthService {
         */
         this.manageStateService.saveWithExpired(
           CookieConfig.NAME_COOKIE,
-          this.hoTen
+          decodedToken.fullname
+        )
+
+
+        this.manageStateService.saveWithExpired(
+          CookieConfig.USERNAME_COOKIE,
+          decodedToken.username
         )
 
         return true

@@ -1,6 +1,6 @@
 <div class="login-info">
-  <span *ngIf="user?.image"><a (click)="toggleShortcut()">
-      <img [src]="user.image" alt="me" class="online" /><span>{{user.username }}</span> <i class="fa fa-angle-down"></i>
+  <span *ngIf="user?.username"><a (click)="toggleShortcut()">
+      <img [src]="user.image ? user.image : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_t4amcTjl6mlINwgVOssm2EyjBiiSUHteJ-wPKZA&s'" alt="me" class="online" /><span>{{user.username }}</span> <i class="fa fa-angle-down"></i>
     </a>
   </span>
 </div>
