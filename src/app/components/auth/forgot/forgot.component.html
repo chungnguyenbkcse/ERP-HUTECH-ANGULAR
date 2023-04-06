@@ -52,23 +52,13 @@
             </header>
 
             <fieldset>
-
               <section>
                 <label class="label">Enter your email address</label>
                 <label class="input"> <i class="icon-append fa fa-envelope"></i>
-                  <input type="email" name="email">
+                  <input type="email" name="email" id="email" [(ngModel)]="email" placeholder="" />
                   <b class="tooltip tooltip-top-right"><i class="fa fa-envelope txt-color-teal"></i> Please enter email address for password reset</b></label>
-              </section>
-              <section>
-										<span class="timeline-seperator text-center text-primary"> <span class="font-sm">OR</span>
-              </span></section>
-              <section>
-                <label class="label">Your Username</label>
-                <label class="input"> <i class="icon-append fa fa-user"></i>
-                  <input type="text" name="username">
-                  <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Enter your username</b> </label>
                 <div class="note">
-                  <a routerLink="/auth/login">I remembered my password!</a>
+                  <a routerLink="/admin/login/login">I remembered my password!</a>
                 </div>
               </section>
 

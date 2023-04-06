@@ -10,6 +10,7 @@ import { UtilsModule } from '@shared/utils/utils.module'
 import { TodoModule } from '@components/todo/todo.module'
 import { SharedModule } from '@shared/shared.module'
 import { CustomtodoModule } from '@components/custom_todo/customtodo.module'
+import { ForgotModule } from '@components/auth/forgot/forgot.module'
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { CustomtodoModule } from '@components/custom_todo/customtodo.module'
     SharedModule,
     TodoModule,
     CustomtodoModule,
+    ForgotModule,
   ],
   declarations: [Pages],
   providers: [

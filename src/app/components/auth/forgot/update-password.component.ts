@@ -1,38 +1,36 @@
 import { Component, OnInit } from "@angular/core";
 import * as _ from 'lodash';
-import { UsersService } from "../users.service";
 import { PasswordStrengthValidator } from "@core/validator/isPassword";
-import { TokenService } from "@components/auth/token.service";
-const jwt_decode = require('jwt-decode');
+import { UsersService } from "@components/user/users.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { TokenService } from "../token.service";
 
 @Component({
-    selector: 'change-password-user',
-    styleUrls: ['./change-password-user.component.css'],    
-    templateUrl: './change-password-user.component.html',
+    selector: 'update-password',
+    styleUrls: ['./update-password.component.css'],    
+    templateUrl: './update-password.component.html',
 })
-export class ChangePasswordUserComponent implements OnInit {
+export class UpdatePasswordComponent implements OnInit {
     private newPassword: string = "";
     private reNewPassword: string = "";
-    private oldPassword: string = "";
     private isError: boolean = false;
     private message: string = "";
+    private email: string = ""
     constructor(
         private service: UsersService,
-        private _tokenService: TokenService,
+        private router: Router,
+        private route: ActivatedRoute,
         private checkPassword: PasswordStrengthValidator,
     ) { }
 
     ngOnInit() {
         this.isError = false;
         this.message = "";
+        this.email = this.route.snapshot.queryParams['email'];
     }
 
     private async update(): Promise<any> {
-        if (this.oldPassword == "") {
-            this.isError = true;
-            this.message = "Please enter old password!";
-        }
-        else if (this.newPassword == "") {
+        if (this.newPassword == "") {
             this.isError = true;
             this.message = "Please enter new password!";
         }
@@ -45,14 +43,10 @@ export class ChangePasswordUserComponent implements OnInit {
             this.message = "New password and re new password not math! Please enter again!";
         }
         else if (this.checkPassword.validate(this.newPassword)) {
-            const token = this._tokenService.getToken().toString();
-
-            const decodedToken = jwt_decode(token);
-            console.log(decodedToken)
-            const username = decodedToken.username;
-            return this.service.changePassword(username, this.oldPassword, this.newPassword)
+            return this.service.updatePassword(this.email, this.newPassword)
                     .then(value => {
-                        alert('Change password successfull!')    
+                        alert('Change password successfull!')
+                        this.router.navigate(['/admin/login/login']);    
                     })
                     .catch(error => {
                         this.isError = true;

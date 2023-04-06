@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import { ForgotService } from './forgot.service';
 
 @Component({
   selector: 'app-forgot',
@@ -8,13 +9,22 @@ import {Router} from "@angular/router";
 })
 export class ForgotComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  private email: string = ""
+
+  constructor(
+    private router: Router,
+    private service: ForgotService,
+  ) { }
 
   ngOnInit() {
+    this.email = ""
   }
 
-  submit(event){
+  async submit(event){
     event.preventDefault();
-    this.router.navigate(['/dashboard/+analytics'])
+    const res = await this.service.create(this.email);
+    if (res != undefined) {
+      this.router.navigate(['/confirm'], { queryParams: { email: this.email } });
+    }
   }
 }

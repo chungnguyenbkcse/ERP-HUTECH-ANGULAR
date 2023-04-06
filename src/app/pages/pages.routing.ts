@@ -10,6 +10,7 @@ import { CustomtodoComponent } from '@components/custom_todo/customtodo.componen
 import { ChangeInfoUserComponent } from '@components/user/change-info/change-info-user.component'
 import { ChangePasswordUserComponent } from '@components/user/change-password/change-password-user.component'
 import { UsersComponent } from '@components/user/users.component'
+import { ForgotComponent } from '@components/auth/forgot/forgot.component'
 
 
 

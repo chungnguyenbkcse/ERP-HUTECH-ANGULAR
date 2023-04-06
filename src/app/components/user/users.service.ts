@@ -82,21 +82,30 @@ export class UsersService {
      * thay đổi mật khẩu
      */
 
-    changePassword(oldPassword: string, newPassword: string) {
-        const token = this._tokenService.getToken().toString();
-
-        const decodedToken = jwt_decode(token);
-        console.log(decodedToken)
-        const username = decodedToken.username;
+    changePassword(data: string, oldPassword: string, newPassword: string) {
         return this._http
             .post(`${this.URL_LOGIN}/user/change-password`, {
-                username: username,
+                data: data,
                 oldPassword: oldPassword,
                 newPassword: newPassword
             })
             .toPromise()
             .then(res => res)
     }
+
+
+    updatePassword(data: string, newPassword: string) {
+        console.log(newPassword)
+        return this._http
+            .post(`${this.URL_LOGIN}/user/update-password`, {
+                data: data,
+                newPassword: newPassword
+            })
+            .toPromise()
+            .then(res => res)
+    }
+
+
 
 
     /**
